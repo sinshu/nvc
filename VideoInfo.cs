@@ -10,7 +10,8 @@ namespace NicoVideoCrawler
         internal VideoInfo(string title, string uri)
         {
             this.title = title.Replace('\\', '＼').Replace('/', '／').Replace(':', '：').Replace('*', '＊')
-                .Replace('?', '？').Replace('\"', '”').Replace('<', '＜').Replace('>', '＞').Replace('|', '｜');
+                .Replace('?', '？').Replace('\"', '”').Replace('<', '＜').Replace('>', '＞').Replace('|', '｜')
+                .Replace('&', '＆');
             this.uri = uri;
         }
 

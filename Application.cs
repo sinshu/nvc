@@ -22,7 +22,7 @@ namespace NicoVideoCrawler
 
         public Application(string loginName, string password)
         {
-            Log.WriteLine("NVC");
+            Log.WriteLine("NVC - ニコニコ動画自動保存システム");
             this.loginName = loginName;
             this.password = password;
         }
@@ -37,6 +37,8 @@ namespace NicoVideoCrawler
             downloader = new VideoDownloader(loginName, password);
 
             //Crawl();
+
+            CreateIndexHtmlFile(GetChannelUris());
 
             var prevHour = DateTime.Now.Hour;
             while (true)
@@ -225,11 +227,11 @@ namespace NicoVideoCrawler
                 writer.WriteLine("<meta name=\"robots\" content=\"noindex, nofollow, noarchive\">");
                 writer.WriteLine("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=" + Settings.TextEncoding + "\">");
                 writer.WriteLine("<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">");
-                writer.WriteLine("<title>NVC</title>");
+                writer.WriteLine("<title>NVC - ニコニコ動画自動保存システム</title>");
                 writer.WriteLine("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
                 writer.WriteLine("</head>");
                 writer.WriteLine("<body>");
-                writer.WriteLine("<h3>NVC</h3>");
+                writer.WriteLine("<h3>NVC - ニコニコ動画自動保存システム</h3>");
                 if (File.Exists(Settings.MessageTextFileName))
                 {
                     writer.WriteLine("<div class=\"message\">" + Utility.TextFileToString(Settings.MessageTextFileName) + "</div>");
