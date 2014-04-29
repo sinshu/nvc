@@ -22,7 +22,7 @@ namespace NicoVideoCrawler
 
         public Application(string loginName, string password)
         {
-            Log.WriteLine("NVC - ニコニコ動画自動保存システム");
+            Log.WriteLine("NVC 0.91");
             this.loginName = loginName;
             this.password = password;
         }
@@ -227,11 +227,11 @@ namespace NicoVideoCrawler
                 writer.WriteLine("<meta name=\"robots\" content=\"noindex, nofollow, noarchive\">");
                 writer.WriteLine("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=" + Settings.TextEncoding + "\">");
                 writer.WriteLine("<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">");
-                writer.WriteLine("<title>NVC - ニコニコ動画自動保存システム</title>");
+                writer.WriteLine("<title>NVC - " + appTitle + "</title>");
                 writer.WriteLine("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
                 writer.WriteLine("</head>");
                 writer.WriteLine("<body>");
-                writer.WriteLine("<h3>NVC - ニコニコ動画自動保存システム</h3>");
+                writer.WriteLine("<h3>NVC - " + appTitle + "</h3>");
                 if (File.Exists(Settings.MessageTextFileName))
                 {
                     writer.WriteLine("<div class=\"message\">" + Utility.TextFileToString(Settings.MessageTextFileName) + "</div>");
@@ -292,5 +292,7 @@ namespace NicoVideoCrawler
                 return fileName.Substring(0, maxFileNameLength) + "...";
             }
         }
+
+        private static string appTitle = "\x30CB\x30B3\x30CB\x30B3\x52D5\x753B\x81EA\x52D5\x4FDD\x5B58\x30B7\x30B9\x30C6\x30E0";
     }
 }
